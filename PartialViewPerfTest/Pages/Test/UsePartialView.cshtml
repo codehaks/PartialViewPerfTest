@@ -1,0 +1,24 @@
+﻿@page "/test/partial"
+@{
+    ViewData["Title"] = "UserPartialView";
+    var watch = System.Diagnostics.Stopwatch.StartNew();
+    int count = 10000;
+}
+<h2>Performance Test : Partial View</h2>
+<hr />
+@for (int i = 1; i < count + 1; i++)
+{
+    for (int j = 0; j < 5; j++)
+    {
+        <partial name="_Stars" model="j" />
+    }
+}
+@{
+    watch.Stop();
+    var elapsedMs = watch.ElapsedMilliseconds;
+}
+<hr />
+<h3>
+    Time elasped : @elapsedMs
+</h3>
+
